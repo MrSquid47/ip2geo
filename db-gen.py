@@ -25,6 +25,7 @@ else:
     urllib.request.urlretrieve("https://github.com/sapics/ip-location-db/raw/main/geolite2-city/geolite2-city-ipv4.csv.gz", "geolite2-city-ipv4.csv.gz", show_progress)
 
     print('Extracting geolite2... ', end='')
+    sys.stdout.flush()
     with gzip.open('geolite2-city-ipv4.csv.gz', 'rb') as f_in:
         with open('geolite2-city-ipv4.csv', 'wb') as f_out:
             shutil.copyfileobj(f_in, f_out)
