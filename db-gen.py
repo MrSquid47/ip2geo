@@ -40,7 +40,7 @@ cur = con.cursor()
 cur.execute("PRAGMA foreign_keys = ON;")
 cur.execute("CREATE TABLE strings (id INTEGER, string TEXT UNIQUE, PRIMARY KEY(id AUTOINCREMENT));")
 cur.execute("CREATE TABLE geolite2 (ip_start_0 INT, ip_start_1 INT, ip_start_2 INT, ip_start_3 INT, ip_end_0 INT, ip_end_1 INT, ip_end_2 INT, ip_end_3 INT, country_code INT, country_name INT, state INT, city INT, CONSTRAINT 'cns1' FOREIGN KEY('country_code') REFERENCES strings(id) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT 'cns2' FOREIGN KEY('country_name') REFERENCES strings(id) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT 'cns3' FOREIGN KEY('state') REFERENCES strings(id) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT 'cns5' FOREIGN KEY('city') REFERENCES strings(id) ON DELETE CASCADE ON UPDATE CASCADE);")
-cur.execute("CREATE VIEW geolite2_view AS SELECT a.ip_start_0,a.ip_start_1,a.ip_start_2,a.ip_start_3,a.ip_end_0,a.ip_end_1,a.ip_end_2,a.ip_end_3,b.string AS country_code,c.string AS country_name,d.string AS state,f.string AS city from geolite2 a join strings b on a.country_code = b.id join strings c on a.country_name = c.id join strings d on a.state = d.id join strings f on a.city = f.id;")
+#cur.execute("CREATE VIEW geolite2_view AS SELECT a.ip_start_0,a.ip_start_1,a.ip_start_2,a.ip_start_3,a.ip_end_0,a.ip_end_1,a.ip_end_2,a.ip_end_3,b.string AS country_code,c.string AS country_name,d.string AS state,f.string AS city from geolite2 a join strings b on a.country_code = b.id join strings c on a.country_name = c.id join strings d on a.state = d.id join strings f on a.city = f.id;")
 #con.set_trace_callback(print)
 
 num_lines = 0
